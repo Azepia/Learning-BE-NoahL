@@ -1,0 +1,22 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "description": "\"Curso de BackEnd de CoderHouse\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azepia/Learning-BE-NoahL.git"
+  },
+  "author": "\" (Noah)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Azepia/Learning-BE-NoahL/issues"
+  },
+  "homepage": "https://github.com/Azepia/Learning-BE-NoahL#readme",
+  "dependencies": {
+    "node": "^20.2.0"
+  }
+}
