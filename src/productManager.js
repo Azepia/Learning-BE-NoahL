@@ -7,14 +7,10 @@ class ProductManager {
     ProductManager.#path;
   }
 
-  _getNextId = () => {
-    const data = fs.readFileSync(ProductManager.#path);
-    const products = JSON.parse(data);
-
+  _getNextId = async () => {
+    const products = await this.getProducts();
     const count = products.length;
-    const nextId = count > 0 ? products[count - 1].id + 1 : 1;
-
-    return nextId;
+    return count > 0 ? products[count - 1].id + 1 : 1;
   };
 
   addProduct = async (title, description, price, thumbnail, code, stock) => {
@@ -22,7 +18,7 @@ class ProductManager {
 
     try {
       const product = {
-        id: this._getNextId(),
+        id: await this._getNextId(),
         title,
         description,
         price,
@@ -61,16 +57,13 @@ class ProductManager {
   };
 
   getProductById = async (id) => {
-    const products = await this.getProducts();
     try {
-      const itemId = Object.values(products).find(
-        (product) => product.id === id
-      );
-
-      if (itemId === undefined) {
-        return console.error("Product does not exist");
+      const products = await this.getProducts();
+      const product = products.find((product) => product.id === id);
+      if (product) {
+        return console.log(product);
       } else {
-        return console.log(itemId);
+        return console.error("Product does not exist");
       }
     } catch (err) {
       return console.error(err);
