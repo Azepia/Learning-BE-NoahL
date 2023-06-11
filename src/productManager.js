@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 class ProductManager {
-  static #path = "../mock/products.json";
+  static #path = "../data/products.json";
   constructor() {
     this.products = [];
     ProductManager.#path;
